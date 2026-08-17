@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Theme tokens as RGB triplets (no commas) so Tailwind's <alpha-value> opacity
+ * modifiers keep working, e.g. bg-surface/90, text-text-secondary/70.
+ * Light values below are IDENTICAL to the original hardcoded design system —
+ * changing themes never alters the light-mode UI that was already approved.
+ */
+:root {
+  --color-surface: 255 255 255;       /* #FFFFFF */
+  --color-canvas: 247 249 252;        /* #F7F9FC */
+  --color-border: 229 231 235;        /* #E5E7EB */
+  --color-text-primary: 17 24 39;     /* #111827 */
+  --color-text-secondary: 107 114 128;/* #6B7280 */
+}
+
+html.dark {
+  --color-surface: 30 33 42;          /* #1E212A */
+  --color-canvas: 17 19 26;           /* #11131A */
+  --color-border: 51 55 68;           /* #333744 */
+  --color-text-primary: 237 239 244;  /* #EDEFF4 */
+  --color-text-secondary: 156 163 180;/* #9CA3B4 */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-canvas text-text-primary font-sans antialiased;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
+
+/* Focus visibility for accessibility (WCAG AA) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #2B3A67;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(24px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

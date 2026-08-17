@@ -1,0 +1,10 @@
+node_modules
+.env
+uploads/documents/*
+uploads/certificates/*
+!uploads/documents/.gitkeep
+!uploads/certificates/.gitkeep
+*.log
+.DS_Store
+uploads/branding/*
+!uploads/branding/.gitkeep
